@@ -1,0 +1,14 @@
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\bin\Debug\CinemaAIDesktop.exe.config
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\bin\Debug\CinemaAIDesktop.exe
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\bin\Debug\CinemaAIDesktop.pdb
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\obj\Debug\CinemaAIDesktop.Properties.Resources.resources
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\obj\Debug\CinemaAIDesktop.csproj.GenerateResource.Cache
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\obj\Debug\CinemaAIDesktop.exe
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\obj\Debug\CinemaAIDesktop.pdb
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\obj\Debug\CinemaAIDesktop.csprojResolveAssemblyReference.cache
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\obj\Debug\CinemaAIDesktop.Form1.resources
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\bin\Debug\Dominio.dll
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\bin\Debug\EntityFramework.dll
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\bin\Debug\Dominio.pdb
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\bin\Debug\Dominio.dll.config
+C:\Users\alessandrogentil\Documents\CinemaAI\CinemaAIDesktop\bin\Debug\EntityFramework.xml

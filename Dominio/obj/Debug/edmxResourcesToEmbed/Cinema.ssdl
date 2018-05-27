@@ -1,0 +1,298 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CinemaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="cli_id" />
+    </Key>
+    <Property Name="cli_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cli_email" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Filme">
+    <Key>
+      <PropertyRef Name="fil_id" />
+    </Key>
+    <Property Name="fil_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fil_titulo" Type="varchar" MaxLength="100" />
+    <Property Name="fil_datalan" Type="datetime" />
+    <Property Name="fil_idademin" Type="int" />
+    <Property Name="gen_id" Type="int" Nullable="false" />
+    <Property Name="fil_tipo" Type="varchar" MaxLength="150" />
+    <Property Name="fil_descricao" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="fil_tempo" Type="datetime" Nullable="false" />
+    <Property Name="fil_imagem" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Funcionario">
+    <Key>
+      <PropertyRef Name="fun_id" />
+    </Key>
+    <Property Name="fun_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fun_salario" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="fun_dataadimissao" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Genero">
+    <Key>
+      <PropertyRef Name="gen_id" />
+    </Key>
+    <Property Name="gen_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gen_filme" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Ingressos">
+    <Key>
+      <PropertyRef Name="ing_id" />
+    </Key>
+    <Property Name="ing_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ing_preco" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="fil_id" Type="int" Nullable="false" />
+    <Property Name="sal_id" Type="int" Nullable="false" />
+    <Property Name="ses_id" Type="int" Nullable="false" />
+    <Property Name="tin_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItensVenda">
+    <Key>
+      <PropertyRef Name="itv_id" />
+    </Key>
+    <Property Name="itv_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ven_id" Type="int" Nullable="false" />
+    <Property Name="itv_qtd" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pessoa">
+    <Key>
+      <PropertyRef Name="pes_id" />
+    </Key>
+    <Property Name="pes_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pes_nome" Type="varchar" MaxLength="150" />
+    <Property Name="pes_datanasc" Type="datetime" />
+    <Property Name="pes_cpf" Type="varchar" MaxLength="150" />
+    <Property Name="cli_id" Type="int" Nullable="false" />
+    <Property Name="fun_id" Type="int" Nullable="false" />
+    <Property Name="pes_telefone" Type="int" />
+    <Property Name="pes_login" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="pes_senha" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Salas">
+    <Key>
+      <PropertyRef Name="sal_id" />
+    </Key>
+    <Property Name="sal_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sal_qtdcadeira" Type="int" />
+    <Property Name="sal_desc" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sessoes">
+    <Key>
+      <PropertyRef Name="ses_id" />
+    </Key>
+    <Property Name="ses_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ses_num" Type="int" />
+    <Property Name="ses_horario" Type="time" Precision="7" />
+    <Property Name="ses_data" Type="date" />
+    <Property Name="ses_qtdLugares" Type="int" />
+    <Property Name="ses_idFilme" Type="int" />
+  </EntityType>
+  <EntityType Name="TiposIngresso">
+    <Key>
+      <PropertyRef Name="tin_id" />
+    </Key>
+    <Property Name="tin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tin_tipo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tin_descricao" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Venda">
+    <Key>
+      <PropertyRef Name="ven_id" />
+    </Key>
+    <Property Name="ven_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ven_datahora" Type="datetime" />
+    <Property Name="fun_id" Type="int" Nullable="false" />
+    <Property Name="cli_id" Type="int" Nullable="false" />
+    <Property Name="ing_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Filme_Genero">
+    <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
+    <End Role="Filme" Type="Self.Filme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genero">
+        <PropertyRef Name="gen_id" />
+      </Principal>
+      <Dependent Role="Filme">
+        <PropertyRef Name="gen_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ingressos_Filme">
+    <End Role="Filme" Type="Self.Filme" Multiplicity="1" />
+    <End Role="Ingressos" Type="Self.Ingressos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filme">
+        <PropertyRef Name="fil_id" />
+      </Principal>
+      <Dependent Role="Ingressos">
+        <PropertyRef Name="fil_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ingressos_Salas">
+    <End Role="Salas" Type="Self.Salas" Multiplicity="1" />
+    <End Role="Ingressos" Type="Self.Ingressos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Salas">
+        <PropertyRef Name="sal_id" />
+      </Principal>
+      <Dependent Role="Ingressos">
+        <PropertyRef Name="sal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ingressos_Sessoes">
+    <End Role="Sessoes" Type="Self.Sessoes" Multiplicity="1" />
+    <End Role="Ingressos" Type="Self.Ingressos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sessoes">
+        <PropertyRef Name="ses_id" />
+      </Principal>
+      <Dependent Role="Ingressos">
+        <PropertyRef Name="ses_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ingressos_TiposIngresso">
+    <End Role="TiposIngresso" Type="Self.TiposIngresso" Multiplicity="1" />
+    <End Role="Ingressos" Type="Self.Ingressos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposIngresso">
+        <PropertyRef Name="tin_id" />
+      </Principal>
+      <Dependent Role="Ingressos">
+        <PropertyRef Name="tin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ItensVenda_Venda">
+    <End Role="Venda" Type="Self.Venda" Multiplicity="1" />
+    <End Role="ItensVenda" Type="Self.ItensVenda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venda">
+        <PropertyRef Name="ven_id" />
+      </Principal>
+      <Dependent Role="ItensVenda">
+        <PropertyRef Name="ven_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pessoa_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="cli_id" />
+      </Principal>
+      <Dependent Role="Pessoa">
+        <PropertyRef Name="cli_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pessoa_Funcionario">
+    <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
+    <End Role="Pessoa" Type="Self.Pessoa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionario">
+        <PropertyRef Name="fun_id" />
+      </Principal>
+      <Dependent Role="Pessoa">
+        <PropertyRef Name="fun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venda_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="cli_id" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="cli_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venda_Funcionario">
+    <End Role="Funcionario" Type="Self.Funcionario" Multiplicity="1" />
+    <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcionario">
+        <PropertyRef Name="fun_id" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="fun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venda_Ingressos">
+    <End Role="Ingressos" Type="Self.Ingressos" Multiplicity="1" />
+    <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingressos">
+        <PropertyRef Name="ing_id" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="ing_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CinemaModelStoreContainer">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Filme" EntityType="Self.Filme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Funcionario" EntityType="Self.Funcionario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingressos" EntityType="Self.Ingressos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItensVenda" EntityType="Self.ItensVenda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pessoa" EntityType="Self.Pessoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Salas" EntityType="Self.Salas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sessoes" EntityType="Self.Sessoes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposIngresso" EntityType="Self.TiposIngresso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Venda" EntityType="Self.Venda" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Filme_Genero" Association="Self.FK_Filme_Genero">
+      <End Role="Genero" EntitySet="Genero" />
+      <End Role="Filme" EntitySet="Filme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ingressos_Filme" Association="Self.FK_Ingressos_Filme">
+      <End Role="Filme" EntitySet="Filme" />
+      <End Role="Ingressos" EntitySet="Ingressos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ingressos_Salas" Association="Self.FK_Ingressos_Salas">
+      <End Role="Salas" EntitySet="Salas" />
+      <End Role="Ingressos" EntitySet="Ingressos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ingressos_Sessoes" Association="Self.FK_Ingressos_Sessoes">
+      <End Role="Sessoes" EntitySet="Sessoes" />
+      <End Role="Ingressos" EntitySet="Ingressos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ingressos_TiposIngresso" Association="Self.FK_Ingressos_TiposIngresso">
+      <End Role="TiposIngresso" EntitySet="TiposIngresso" />
+      <End Role="Ingressos" EntitySet="Ingressos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ItensVenda_Venda" Association="Self.FK_ItensVenda_Venda">
+      <End Role="Venda" EntitySet="Venda" />
+      <End Role="ItensVenda" EntitySet="ItensVenda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pessoa_Cliente" Association="Self.FK_Pessoa_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Pessoa" EntitySet="Pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pessoa_Funcionario" Association="Self.FK_Pessoa_Funcionario">
+      <End Role="Funcionario" EntitySet="Funcionario" />
+      <End Role="Pessoa" EntitySet="Pessoa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venda_Cliente" Association="Self.FK_Venda_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venda_Funcionario" Association="Self.FK_Venda_Funcionario">
+      <End Role="Funcionario" EntitySet="Funcionario" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venda_Ingressos" Association="Self.FK_Venda_Ingressos">
+      <End Role="Ingressos" EntitySet="Ingressos" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

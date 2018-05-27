@@ -1,0 +1,8 @@
+C:\Users\alessandrogentil\Documents\CinemaAI\Dominio\bin\Debug\Dominio.dll.config
+C:\Users\alessandrogentil\Documents\CinemaAI\Dominio\bin\Debug\Dominio.dll
+C:\Users\alessandrogentil\Documents\CinemaAI\Dominio\bin\Debug\Dominio.pdb
+C:\Users\alessandrogentil\Documents\CinemaAI\Dominio\bin\Debug\EntityFramework.dll
+C:\Users\alessandrogentil\Documents\CinemaAI\Dominio\bin\Debug\EntityFramework.xml
+C:\Users\alessandrogentil\Documents\CinemaAI\Dominio\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
+C:\Users\alessandrogentil\Documents\CinemaAI\Dominio\obj\Debug\Dominio.dll
+C:\Users\alessandrogentil\Documents\CinemaAI\Dominio\obj\Debug\Dominio.pdb

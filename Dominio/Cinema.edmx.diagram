@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2bc699d9ee554eb993f4934d2124b7ad" Name="Diagram1">
+        <EntityTypeShape EntityType="CinemaModel.Cliente" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Filme" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Funcionario" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Genero" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Ingressos" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.ItensVenda" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Pessoa" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Salas" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Sessoes" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.TiposIngresso" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinemaModel.Venda" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="CinemaModel.FK_Pessoa_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Venda_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Filme_Genero" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Ingressos_Filme" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Pessoa_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Venda_Funcionario" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Ingressos_Salas" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Ingressos_Sessoes" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Ingressos_TiposIngresso" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_Venda_Ingressos" ManuallyRouted="false" />
+        <AssociationConnector Association="CinemaModel.FK_ItensVenda_Venda" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
