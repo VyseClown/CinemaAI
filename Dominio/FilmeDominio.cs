@@ -73,6 +73,23 @@ namespace Dominio
                 throw e;
             }
         }
+        public List<Sessoes> listarSessoes()
+        {
+            try
+            {
+                List<Sessoes> lista = new List<Sessoes>();
+                using (CinemaEntities db = new CinemaEntities())
+                {
+                    lista = (from s in db.Sessoes orderby s.ses_data select s).ToList();
+                }
+                return lista;
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
         public Salas retornarSala(int id)
         {
             try
@@ -133,6 +150,15 @@ namespace Dominio
                            select e).ToList().Last();
             }
             return retorno;
+        }
+        public void alterarSessao(Sessoes ses)
+        {
+            
+            using (CinemaEntities db = new CinemaEntities())
+            {
+                db.Entry(ses).State = System.Data.EntityState.Modified;
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -36,7 +36,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.lblImg = new System.Windows.Forms.Label();
             this.btnSelecionarImagem = new System.Windows.Forms.Button();
-            this.btnAlterar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.cbGenero = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,11 +56,8 @@
             this.txtQtdSala = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnSalvarSala = new System.Windows.Forms.Button();
-            this.btnAlterarSala = new System.Windows.Forms.Button();
             this.btnAlterarSessao = new System.Windows.Forms.Button();
             this.btnSalvarSessao = new System.Windows.Forms.Button();
-            this.txtDescricaoSessao = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.dtpHorarioSessao = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.dtpDataSessao = new System.Windows.Forms.DateTimePicker();
@@ -70,10 +66,12 @@
             this.cbSalas = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.cbFilmes = new System.Windows.Forms.ComboBox();
+            this.dgvSessoes = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSessoes)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -89,6 +87,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dgvSessoes);
             this.tabPage2.Controls.Add(this.label18);
             this.tabPage2.Controls.Add(this.cbFilmes);
             this.tabPage2.Controls.Add(this.label17);
@@ -99,8 +98,6 @@
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.btnAlterarSessao);
             this.tabPage2.Controls.Add(this.btnSalvarSessao);
-            this.tabPage2.Controls.Add(this.txtDescricaoSessao);
-            this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -111,7 +108,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.btnAlterarSala);
             this.tabPage3.Controls.Add(this.btnSalvarSala);
             this.tabPage3.Controls.Add(this.txtDescricaoSala);
             this.tabPage3.Controls.Add(this.label9);
@@ -132,7 +128,6 @@
             this.tabPage4.Controls.Add(this.label11);
             this.tabPage4.Controls.Add(this.lblImg);
             this.tabPage4.Controls.Add(this.btnSelecionarImagem);
-            this.tabPage4.Controls.Add(this.btnAlterar);
             this.tabPage4.Controls.Add(this.btnSalvar);
             this.tabPage4.Controls.Add(this.cbGenero);
             this.tabPage4.Controls.Add(this.label7);
@@ -188,15 +183,6 @@
             this.btnSelecionarImagem.Text = "Selecionar Imagem";
             this.btnSelecionarImagem.UseVisualStyleBackColor = true;
             this.btnSelecionarImagem.Click += new System.EventHandler(this.btnSelecionarImagem_Click);
-            // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Location = new System.Drawing.Point(214, 258);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.btnAlterar.TabIndex = 19;
-            this.btnAlterar.Text = "Alterar";
-            this.btnAlterar.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
@@ -353,27 +339,19 @@
             this.btnSalvarSala.UseVisualStyleBackColor = true;
             this.btnSalvarSala.Click += new System.EventHandler(this.btnSalvarSala_Click);
             // 
-            // btnAlterarSala
-            // 
-            this.btnAlterarSala.Location = new System.Drawing.Point(160, 72);
-            this.btnAlterarSala.Name = "btnAlterarSala";
-            this.btnAlterarSala.Size = new System.Drawing.Size(75, 23);
-            this.btnAlterarSala.TabIndex = 20;
-            this.btnAlterarSala.Text = "Alterar";
-            this.btnAlterarSala.UseVisualStyleBackColor = true;
-            // 
             // btnAlterarSessao
             // 
-            this.btnAlterarSessao.Location = new System.Drawing.Point(235, 103);
+            this.btnAlterarSessao.Location = new System.Drawing.Point(90, 107);
             this.btnAlterarSessao.Name = "btnAlterarSessao";
             this.btnAlterarSessao.Size = new System.Drawing.Size(75, 23);
             this.btnAlterarSessao.TabIndex = 26;
             this.btnAlterarSessao.Text = "Alterar";
             this.btnAlterarSessao.UseVisualStyleBackColor = true;
+            this.btnAlterarSessao.Click += new System.EventHandler(this.btnAlterarSessao_Click);
             // 
             // btnSalvarSessao
             // 
-            this.btnSalvarSessao.Location = new System.Drawing.Point(154, 103);
+            this.btnSalvarSessao.Location = new System.Drawing.Point(9, 107);
             this.btnSalvarSessao.Name = "btnSalvarSessao";
             this.btnSalvarSessao.Size = new System.Drawing.Size(75, 23);
             this.btnSalvarSessao.TabIndex = 25;
@@ -381,34 +359,19 @@
             this.btnSalvarSessao.UseVisualStyleBackColor = true;
             this.btnSalvarSessao.Click += new System.EventHandler(this.btnSalvarSessao_Click);
             // 
-            // txtDescricaoSessao
-            // 
-            this.txtDescricaoSessao.Location = new System.Drawing.Point(9, 20);
-            this.txtDescricaoSessao.Name = "txtDescricaoSessao";
-            this.txtDescricaoSessao.Size = new System.Drawing.Size(100, 20);
-            this.txtDescricaoSessao.TabIndex = 24;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 3);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(55, 13);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Descrição";
-            // 
             // dtpHorarioSessao
             // 
             this.dtpHorarioSessao.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpHorarioSessao.Location = new System.Drawing.Point(9, 60);
+            this.dtpHorarioSessao.Location = new System.Drawing.Point(9, 37);
             this.dtpHorarioSessao.Name = "dtpHorarioSessao";
+            this.dtpHorarioSessao.ShowUpDown = true;
             this.dtpHorarioSessao.Size = new System.Drawing.Size(100, 20);
             this.dtpHorarioSessao.TabIndex = 28;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 43);
+            this.label15.Location = new System.Drawing.Point(6, 20);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(41, 13);
             this.label15.TabIndex = 27;
@@ -417,7 +380,7 @@
             // dtpDataSessao
             // 
             this.dtpDataSessao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataSessao.Location = new System.Drawing.Point(157, 20);
+            this.dtpDataSessao.Location = new System.Drawing.Point(157, 37);
             this.dtpDataSessao.Name = "dtpDataSessao";
             this.dtpDataSessao.Size = new System.Drawing.Size(100, 20);
             this.dtpDataSessao.TabIndex = 30;
@@ -425,7 +388,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(154, 3);
+            this.label16.Location = new System.Drawing.Point(154, 20);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(30, 13);
             this.label16.TabIndex = 29;
@@ -434,7 +397,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 86);
+            this.label17.Location = new System.Drawing.Point(6, 63);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(33, 13);
             this.label17.TabIndex = 32;
@@ -443,7 +406,7 @@
             // cbSalas
             // 
             this.cbSalas.FormattingEnabled = true;
-            this.cbSalas.Location = new System.Drawing.Point(6, 103);
+            this.cbSalas.Location = new System.Drawing.Point(9, 80);
             this.cbSalas.Name = "cbSalas";
             this.cbSalas.Size = new System.Drawing.Size(121, 21);
             this.cbSalas.TabIndex = 31;
@@ -451,7 +414,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(154, 43);
+            this.label18.Location = new System.Drawing.Point(154, 63);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(36, 13);
             this.label18.TabIndex = 34;
@@ -460,10 +423,19 @@
             // cbFilmes
             // 
             this.cbFilmes.FormattingEnabled = true;
-            this.cbFilmes.Location = new System.Drawing.Point(154, 60);
+            this.cbFilmes.Location = new System.Drawing.Point(154, 80);
             this.cbFilmes.Name = "cbFilmes";
             this.cbFilmes.Size = new System.Drawing.Size(121, 21);
             this.cbFilmes.TabIndex = 33;
+            // 
+            // dgvSessoes
+            // 
+            this.dgvSessoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSessoes.Location = new System.Drawing.Point(9, 148);
+            this.dgvSessoes.Name = "dgvSessoes";
+            this.dgvSessoes.Size = new System.Drawing.Size(301, 150);
+            this.dgvSessoes.TabIndex = 35;
+            this.dgvSessoes.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSessoes_CellMouseDoubleClick);
             // 
             // Form1
             // 
@@ -481,6 +453,7 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSessoes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -495,7 +468,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblImg;
         private System.Windows.Forms.Button btnSelecionarImagem;
-        private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.ComboBox cbGenero;
         private System.Windows.Forms.Label label7;
@@ -516,19 +488,17 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtQtdSala;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btnAlterarSala;
         private System.Windows.Forms.DateTimePicker dtpDataSessao;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dtpHorarioSessao;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btnAlterarSessao;
         private System.Windows.Forms.Button btnSalvarSessao;
-        private System.Windows.Forms.TextBox txtDescricaoSessao;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cbFilmes;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox cbSalas;
+        private System.Windows.Forms.DataGridView dgvSessoes;
     }
 }
 

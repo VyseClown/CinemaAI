@@ -18,6 +18,8 @@ namespace CinemaAIDesktop
         string caminhoImage1 = "";
         string nomeimagem1 = "";
         int idfilme = 0;
+        int idSessao = 0;
+        int qtdLugaresSessao = 0;
         public Form1()
         {
             InitializeComponent();
@@ -25,6 +27,8 @@ namespace CinemaAIDesktop
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dtpHorarioSessao.Format = DateTimePickerFormat.Time;
+
             FilmeDominio objBus = new FilmeDominio();
             cbGenero.DataSource = objBus.listarGeneros();
             cbGenero.ValueMember = "gen_id";
@@ -37,6 +41,16 @@ namespace CinemaAIDesktop
             cbSalas.DataSource = objBus.listarSalas();
             cbSalas.ValueMember = "sal_id";
             cbSalas.DisplayMember = "sal_desc";
+
+            dgvSessoes.DataSource = objBus.listarSessoes();
+            dgvSessoes.Columns[0].Visible = false;
+            dgvSessoes.Columns[6].Visible = false;
+            dgvSessoes.Columns[1].HeaderText = "Numero da sala";
+            dgvSessoes.Columns[2].HeaderText = "Hora";
+            dgvSessoes.Columns[3].HeaderText = "Data";
+            dgvSessoes.Columns[4].HeaderText = "Qtd de lugares";
+            dgvSessoes.Columns[5].HeaderText = "Id do filme";
+
         }
 
         private void btnSelecionarImagem_Click(object sender, EventArgs e)
@@ -104,7 +118,9 @@ namespace CinemaAIDesktop
                 file1.CopyTo(@caminhoImage1);
                 fildom.Adicionar(fil);
                 MessageBox.Show("Filme Cadastrado !");
-
+                cbFilmes.DataSource = fildom.listarFilmes();
+                cbFilmes.ValueMember = "fil_id";
+                cbFilmes.DisplayMember = "fil_titulo";
                 nomeimagem1 = "";
 
                 limparTextBoxEMasked(tabPage4);
@@ -122,6 +138,9 @@ namespace CinemaAIDesktop
             sala.sal_qtdcadeira = int.Parse(txtQtdSala.Text);
             objdom.Adicionar(sala);
             MessageBox.Show("Sala adicionada !");
+            cbSalas.DataSource = objdom.listarSalas();
+            cbSalas.ValueMember = "sal_id";
+            cbSalas.DisplayMember = "sal_desc";
             limparTextBoxEMasked(tabPage3);
         }
         private void limparTextBoxEMasked(TabPage tab)
@@ -158,6 +177,56 @@ namespace CinemaAIDesktop
             objdom.Adicionar(sess);
             MessageBox.Show("Sessao adicionada !");
             limparTextBoxEMasked(tabPage2);
+
+            dgvSessoes.DataSource = objdom.listarSessoes();
+            dgvSessoes.Columns[0].Visible = false;
+            dgvSessoes.Columns[6].Visible = false;
+            dgvSessoes.Columns[1].HeaderText = "Numero da sala";
+            dgvSessoes.Columns[2].HeaderText = "Hora";
+            dgvSessoes.Columns[3].HeaderText = "Data";
+            dgvSessoes.Columns[4].HeaderText = "Qtd de lugares";
+            dgvSessoes.Columns[5].HeaderText = "Id do filme";
+        }
+
+        private void dgvSessoes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            idSessao = (int)dgvSessoes.CurrentRow.Cells[0].Value;
+            int idFilme = (int)dgvSessoes.CurrentRow.Cells[5].Value;
+            int idSala = (int)dgvSessoes.CurrentRow.Cells[1].Value;
+            //DateTime horario = (DateTime)dgvSessoes.CurrentRow.Cells[2].Value;
+            dtpDataSessao.Value = (DateTime)dgvSessoes.CurrentRow.Cells[3].Value;
+            dtpHorarioSessao.Value = DateTime.Parse(dgvSessoes.CurrentRow.Cells[2].Value.ToString());//(time)dgvSessoes.CurrentRow.Cells[2].Value;
+            qtdLugaresSessao = (int)dgvSessoes.CurrentRow.Cells[4].Value;
+            cbFilmes.SelectedValue = idFilme;
+            cbSalas.SelectedValue = idSala;
+            
+        }
+
+        private void btnAlterarSessao_Click(object sender, EventArgs e)
+        {
+            FilmeDominio objdom = new FilmeDominio();
+            Sessoes sess = new Sessoes();
+
+            sess.ses_data = dtpDataSessao.Value;
+            sess.ses_horario = TimeSpan.Parse(dtpHorarioSessao.Value.ToShortTimeString());
+            sess.ses_idFilme = int.Parse(cbFilmes.SelectedValue.ToString());
+            sess.ses_num = int.Parse(cbSalas.SelectedValue.ToString());
+            sess.ses_qtdLugares = objdom.retornarSala(int.Parse(cbSalas.SelectedValue.ToString())).sal_qtdcadeira;
+            sess.ses_id = idSessao;
+
+            objdom.alterarSessao(sess);
+            MessageBox.Show("Sessao Alterada !");
+            limparTextBoxEMasked(tabPage2);
+
+            dgvSessoes.DataSource = objdom.listarSessoes();
+            dgvSessoes.Columns[0].Visible = false;
+            dgvSessoes.Columns[6].Visible = false;
+            dgvSessoes.Columns[1].HeaderText = "Numero da sala";
+            dgvSessoes.Columns[2].HeaderText = "Hora";
+            dgvSessoes.Columns[3].HeaderText = "Data";
+            dgvSessoes.Columns[4].HeaderText = "Qtd de lugares";
+            dgvSessoes.Columns[5].HeaderText = "Id do filme";
+            idSessao = 0;
         }
     }
 }
