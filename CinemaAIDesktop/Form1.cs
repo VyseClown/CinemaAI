@@ -64,17 +64,17 @@ namespace CinemaAIDesktop
             if (result == DialogResult.OK)
             {
                 file1 = new FileInfo(openFileDialog1.FileName);
-                caminhoImage1 = System.IO.Path.GetFullPath(@"..\..\..\" + @"\CinemaAI\imgFilmes\" + file1.Name);
+                caminhoImage1 = System.IO.Path.GetFullPath(@"..\..\..\" + @"\CinemaAIWeb\imgFilmes\" + file1.Name);
 
                 if (System.IO.File.Exists(Path.Combine(Directory.GetCurrentDirectory(), caminhoImage1)))//será que isso deu certo ?
                 {
                     int i = 1;
-                    caminhoImage1 = System.IO.Path.GetFullPath(@"..\..\..\" + @"\CinemaAI\imgFilmes\" + iddofilme + file1.Name);//agora vai
+                    caminhoImage1 = System.IO.Path.GetFullPath(@"..\..\..\" + @"\CinemaAIWeb\imgFilmes\" + iddofilme + file1.Name);//agora vai
 
                     nomeimagem1 = iddofilme + file1.Name;
                     while (System.IO.File.Exists(Path.Combine(Directory.GetCurrentDirectory(), caminhoImage1)))
                     {
-                        caminhoImage1 = System.IO.Path.GetFullPath(@"..\..\..\" + @"\CinemaAI\imgFilmes\" + iddofilme + i + file1.Name);
+                        caminhoImage1 = System.IO.Path.GetFullPath(@"..\..\..\" + @"\CinemaAIWeb\imgFilmes\" + iddofilme + i + file1.Name);
                         nomeimagem1 = iddofilme + i + file1.Name;
                         i++;
                     }
