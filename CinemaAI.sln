@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaAI", "CinemaAI\CinemaAI.csproj", "{87255B4D-F27C-409F-9658-DA3E372A2B11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaAIWeb", "CinemaAI\CinemaAIWeb.csproj", "{87255B4D-F27C-409F-9658-DA3E372A2B11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaAIDesktop", "CinemaAIDesktop\CinemaAIDesktop.csproj", "{21C8A110-3DDB-4FEF-A823-4100E697FC25}"
 EndProject
